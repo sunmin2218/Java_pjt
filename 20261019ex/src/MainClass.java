@@ -46,8 +46,8 @@ public class MainClass {
 		/*
 		 * 형식 문자열 반환하기 : String.format() === ( js 에서 : `` 템플릿 문자열 )
 		 */
-		String res = String.forma("이름은 %s이고, 나이는 %d살입니다.%n, "홍길동", 20);
-		System.out.println("res: " + res);
+//		String res = String.forma("이름은 %s이고, 나이는 %d살입니다.%n, "홍길동", 20);
+//		System.out.println("res: " + res);
 		
 		// let str = "홍길동";
 		// let age - 20;
