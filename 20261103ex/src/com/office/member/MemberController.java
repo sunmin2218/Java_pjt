@@ -5,8 +5,7 @@ import java.util.Scanner;
 public class MemberController implements MemberConfig {
 	
 	// 여기서 멤버서비스를 싱글톤으로 만들었다
-	final private MemberService memberService =
-			MemberContainer.getInstance().getMemberService();
+	final private MemberService memberService;
 	
 	public MemberController(MemberService memberService) {
 		this.memberService = memberService;
