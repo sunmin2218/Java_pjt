@@ -1,9 +1,21 @@
 package com.office.member;
 
 public class MemberService implements IMemberService {
+	
+	
+	
+	
+	
+	
+	final private MemberDao memberDao =
+			MemberContainer.getInstance().getMemberDao();
+	
+    public MemberService(MemberDao memberDao) {
+		this.memberDao = memberDao;
+	}
 
 	
-	MemberDao memberDao = new MemberDao();
+//	MemberDao memberDao = new MemberDao();
 	
 	@Override
 	public void signUp(MemberDto memberDto) {
@@ -38,15 +50,22 @@ public class MemberService implements IMemberService {
 		if (searchedMemberDto != null) {
 			System.out.println("로그인 성공!!");
 		} else {
-			System.out.println("고르인 실패!!");
+			System.out.println("로그인 실패!!");
 		}
 	}
 	
 	
 
 	@Override
-	public void modify() {
-		// TODO Auto-generated method stub
+	public void modify(MemberDto memberDto) {
+		MemberDto updatedMemberDto = 
+				memberDao.updateMemberByMemId(memberDto);
+		
+		if (updatedMemberDto != null) {
+			System.out.println("Modify SUCCESS!!");
+		} else {
+			System.out.println("Modify FAIL");
+		}
 		
 	}
 
@@ -61,6 +80,20 @@ public class MemberService implements IMemberService {
 			System.out.println("탈퇴처리 실패했습니다.");
 		}
 		
+	}
+
+
+	
+	
+	public boolean doAuthenticationByMemIdAndMemPw(MemberDto memberDto) {
+		
+		MemberDto dto = memberDao.searchMemberByMemIdAndMemPw(memberDto);
+		
+		/*
+		 * MemberDto --> MemberDto / null
+		 */
+		
+		return dto != null ? true : false;
 	}
 	
 	
