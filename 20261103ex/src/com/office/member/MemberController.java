@@ -84,8 +84,8 @@ public class MemberController implements MemberConfig {
 				break;
 				
 			case SYSTEM_OUT:
-				systemFlag = false;
-				System.out.println("Goodbye~");
+				systemFlag = !systemFlag;       // true, false 대신 논리연산자 중 하나인 부정연산자를 사용한 모습
+				System.out.println("Goodbye~");  // 근데 그냥 true, false 쓰자
 				break;
 			
 			}
