@@ -6,7 +6,8 @@ public class MemberService {
 	
 	final public static int SIGN_UP_FAIL    = 0;
 	final public static int SIGN_UP_SUCCESS = 1;
-	// 이 상수는 서비스에 있는게 그나마 맞다
+	// 이 상수는 MemberService에 있는게 맞다
+	// 상수도 아무곳에 두지 말고 있어야할법한 곳에 넣어두자
 	
 	public MemberService(MemberDao memberDao) {
 		this.memberDao = memberDao;
