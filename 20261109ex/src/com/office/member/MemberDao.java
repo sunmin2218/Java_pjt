@@ -35,12 +35,37 @@ public class MemberDao {
 				MemberService.SIGN_UP_FAIL;
 		
 	}
+	
+	public int updateMember(MemberDto memberDto) {
+		HashMap<String, MemberDto> members = diaryDb.getMembers();
+		// 해쉬맵 안의 구조 심화
+		// 반환이 될 때 이전에 있던 값이 반환된다
+		
+		members.put(memberDto.getMemId(), memberDto);
+		// 일단 이렇게 값을 밀어넣고
+		return members.get(memberDto.getMemId()) != null 
+				? 
+				MemberService.MODIFY_SUCCESS 
+				: 
+				MemberService.MODIFY_FAIL;
+		
+	}
+	
 
 	public MemberDto selectMemberByMemId(String memId) {
 		
 		HashMap<String, MemberDto> members = diaryDb.getMembers();
 		
 		return members.get(memId) != null ? members.get(memId) : null;
+	}
+
+	public Object deleteByMemId(String memId) {
+	
+		HashMap<String, MemberDto> members = diaryDb.getMembers();
+		
+		members.remove(memId);
+		
+		return members.get(memId) == null ? MemberService.DELETE_SUCCESS : MemberService.DELETE_FAIL;
 	}
 
 	
